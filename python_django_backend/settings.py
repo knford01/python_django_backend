@@ -20,17 +20,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zm=w$p(!r!lik+dc_wj)$1quaidfhjnuz!s87r(*i4hne5vk&$'
+SECRET_KEY = 'django-insecure-acp%okphwj)xklpor(4)1y&--8*h4z&t#0ny$=%in93%#b)24e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# from datetime import timedelta
+# SIMPLE_JWT = {
+#     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+#     "ROTATE_REFRESH_TOKENS": True
+# }
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'graphene_django',
+    # 'corsheaders',
+    'rest_framework',
+    'python_django_backend',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,15 +48,26 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# GRAPHENE = {
+#     'SCHEMA': 'schema.schema'
+# }
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
+# }
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 
 ROOT_URLCONF = 'python_django_backend.urls'
 
