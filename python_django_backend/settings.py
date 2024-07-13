@@ -33,10 +33,9 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True
 }
 
-# Application definition
-
+# Application definitionpip
 INSTALLED_APPS = [
-    # 'graphene_django',
+    'graphene_django',
     'corsheaders',
     'rest_framework',
     'python_django_backend',
@@ -48,20 +47,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-# GRAPHENE = {
-#     'SCHEMA': 'schema.schema'
-# }
+GRAPHENE = {
+    'SCHEMA': 'python_django_backend.schema.schema'
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware', 
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# This will redirect the url if a / is used or not
+APPEND_SLASH = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
@@ -89,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'python_django_backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -99,7 +101,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
